@@ -19,6 +19,17 @@ DESCRIPTION
   Homepage:  https://github.com/jahed/${name}
   Donate:    https://jahed.dev/donate
 
+OPTIONS
+  <host>
+    Target host. Where you want to knock.
+    Must exist under ~/.config/knock/hosts.json
+
+  -h, --help
+    Prints this help message.
+
+  --version
+    Prints the version.
+
 CONFIG
   You MUST place a config file under "~/.config/knock/hosts.json" with the
   following structure:
@@ -32,21 +43,6 @@ CONFIG
     ${0} example.com
 
   Will knock on example.com at ports 1000 then 2000 then 3000.
-
-OPTIONS
-  <host>
-    Target host. Where you want to knock.
-    Must exist under ~/.config/knock/hosts.json
-
-  -h, --help
-    Prints this help message.
-
-  --version
-    Prints the version.
-
-EXAMPLES
-  Take a detailed image and create optimised tiles to save space.
-    nc examepl.com
 
 DEPENDENCIES
   Required
