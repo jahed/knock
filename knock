@@ -2,7 +2,7 @@
 set -euo pipefail
 
 name="knock"
-version="v1.0.1"
+version="v2.0.0"
 
 function print_help {
   cat <<EOF
