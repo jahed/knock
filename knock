@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+name="knock"
+version="v0.1.0"
+
+function print_help {
+  cat <<EOF
+NAME
+  ${name} - a simple port knocker
+
+SYNOPSIS
+  ${0} <host>
+
+DESCRIPTION
+  Given a host, looks up its port sequence and knocks on it.
+
+  Version:   ${version}
+  Homepage:  https://github.com/jahed/${name}
+  Donate:    https://jahed.dev/donate
+
+CONFIG
+  You MUST place a config file under "~/.config/knock/hosts.json" with the
+  following structure:
+
+  {
+    "example.com": [1000, 2000, 3000]
+  }
+
+  Such that executing:
+
+    ${0} example.com
+
+  Will knock on example.com at ports 1000 then 2000 then 3000.
+
+OPTIONS
+  <input_image>
+    Image to convert into tiles. Must exist. Must be square, otherwise
+    see --square option.
+
+  <host>
+    Target host. Where you want to knock.
+    Must exist under ~/.config/knock/hosts.json
+
+  -h, --help
+    Prints this help message.
+
+  --version
+    Prints the version.
+
+EXAMPLES
+  Take a detailed image and create optimised tiles to save space.
+    nc examepl.com
+
+DEPENDENCIES
+  Required
+    ncat    https://nmap.org/ncat/
+    Bash    https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29
+
+COPYRIGHT
+  The MIT License (MIT)
+  Copyright (c) 2020 Jahed Ahmed
+EOF
+}
+
+function failure {
+  echo "error:        ${1}"
+  echo "for help use: ${0} --help"
+  exit 1
+}
+
+POSITIONAL=()
+while [[ $# -gt 0 ]]; do
+  key="$1"
+
+  case $key in
+    -h|--help)
+      print_help
+      exit 0
+      ;;
+    --version)
+      echo "${name} ${version}"
+      exit 0
+      ;;
+    -*)
+      failure "unknown argument $1"
+      exit 1
+      ;;
+    *)
+      POSITIONAL+=("$1")
+      shift
+      ;;
+  esac
+done
+set -- "${POSITIONAL[@]}"
+
+target="${1}"
+sequence="$(jq -r ".[\"${target}\"] | join(\" \")" ~/.config/knock/hosts.json)"
+
+for port in ${sequence}; do
+  nc -z -w '0.1' "${target}" "${port}" || true
+done
