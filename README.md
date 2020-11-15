@@ -15,7 +15,7 @@ SYNOPSIS
 DESCRIPTION
   Given a host, looks up its port sequence and knocks on it.
 
-  Version:   v0.1.0
+  Version:   v1.0.0
   Homepage:  https://github.com/jahed/knock
   Donate:    https://jahed.dev/donate
 
