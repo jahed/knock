@@ -10,7 +10,7 @@ git add knock README
 echo "Committing"
 version="$(./knock --version | cut -d' ' -f2)"
 message="chore(release): ${version}"
-git commit -a -m "${message}"
+git commit -m "${message}"
 git tag "${version}" -m "${message}"
 
 echo "Pushing"
