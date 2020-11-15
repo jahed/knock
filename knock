@@ -34,10 +34,6 @@ CONFIG
   Will knock on example.com at ports 1000 then 2000 then 3000.
 
 OPTIONS
-  <input_image>
-    Image to convert into tiles. Must exist. Must be square, otherwise
-    see --square option.
-
   <host>
     Target host. Where you want to knock.
     Must exist under ~/.config/knock/hosts.json
