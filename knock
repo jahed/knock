@@ -35,7 +35,7 @@ CONFIG
   following structure:
 
   {
-    "example.com": [1000, 2000, 3000]
+    "example.com": ["1000", "2000", "3000"]
   }
 
   Such that executing:
