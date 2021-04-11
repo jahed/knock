@@ -7,7 +7,7 @@ SYNOPSIS
 DESCRIPTION
   Given a host, looks up its port sequence and knocks on it.
 
-  Version:   v2.0.0
+  Version:   v2.1.0
   Homepage:  https://github.com/jahed/knock
   Donate:    https://jahed.dev/donate
 
@@ -27,7 +27,7 @@ CONFIG
   following structure:
 
   {
-    "example.com": [1000, 2000, 3000]
+    "example.com": ["1000", "2000", "3000"]
   }
 
   Such that executing:
