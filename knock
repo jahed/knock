@@ -101,5 +101,5 @@ target="${1}"
 sequence="$(jq -r ".[\"${target}\"] | join(\" \")" ~/.config/knock/hosts.json)"
 
 for port in ${sequence}; do
-  nc -z -w '0.1' "${target}" "${port}" || true
+  nc -z -w 1 "${target}" "${port}" || true
 done
