@@ -7,14 +7,13 @@ SYNOPSIS
 DESCRIPTION
   Given a host, looks up its port sequence and knocks on it.
 
-  Version:   v2.2.0
+  Version:   v2.2.1
   Homepage:  https://github.com/jahed/knock
   Donate:    https://jahed.dev/donate
 
 OPTIONS
   <host>
-    Target host. Where you want to knock.
-    Must exist in config file.
+    Target host. Where you want to knock. Must exist in config file.
 
   -c, --config <config>
     Config file location. Defaults to ~/.config/knock/hosts.json.
@@ -26,8 +25,7 @@ OPTIONS
     Prints the version.
 
 CONFIG
-  You MUST place a config file under "~/.config/knock/hosts.json" with the
-  following structure:
+  The config file must have the following structure:
 
   {
     "example.com": ["1000", "2000", "3000"]
@@ -35,7 +33,7 @@ CONFIG
 
   Such that executing:
 
-    ./knock example.com
+    ./knock --config ./knock.json example.com
 
   Will knock on example.com at ports 1000 then 2000 then 3000.
 
